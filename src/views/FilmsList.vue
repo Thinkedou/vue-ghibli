@@ -9,39 +9,54 @@
           </tr>
       </thead>
       <tbody>
-          <tr>
-              <td>2</td>
-              <td>Truc</td>
-              <td>2019</td>
-              <td>👀</td>
+          <tr v-for="movie in movies" :key="movie.id" >
+              <td>{{movie.id}}</td>
+              <td>{{movie.title}}</td>
+              <td>{{movie.release_date}}</td>
+              <td @click="goToMoviesDetails(movie.id)">👀</td>
           </tr>
-          <tr>
-              <td>3</td>
-              <td>Chateau</td>
-              <td>2019</td>
-              <td>👀</td>
-          </tr>
+
           <!-- and so on... -->
       </tbody>
   </table>
 </template>
 
 <script>
-
+import axios from 'axios'
 
 export default {
   name: 'FilmsList',
-  components: {
-    }
+  data:()=>({
+      movies:[],
+  }),
+  methods:{
+      goToMoviesDetails(moviesId){
+          console.log(moviesId)
+          this.$router.push({name:'filmsDetails',params:{filmId:moviesId}})
+      }
+  },
+  async created(){
+
+      const movies = await axios.get("https://ghibliapi.herokuapp.com/films")
+      this.movies  = movies.data
+
+      console.log('CREATED')
+  }
 }
 </script>
+
+
+
+
+
+
 <style scoped>
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 800px;
+    min-width: 1200px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .styled-table thead tr {

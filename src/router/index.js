@@ -15,7 +15,19 @@ const routes = [
     name: 'about',
 
     component: () => import('../views/AboutView.vue')
-    }
+    },
+    {
+        path: '/films',
+        name: 'films',
+        component: () => import('../views/FilmsList.vue')
+    },
+    {
+        path: '/films/:filmId',
+        name: 'filmsDetails',
+        component: () => import('../views/FilmsDetails.vue')
+    },
+
+
 ]
 
 const router = new VueRouter({

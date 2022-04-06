@@ -4,12 +4,12 @@
             <div class="course">
                 <div class="course-preview" >
 
-                    <img src='https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg' alt='affiche' />
+                    <img :src='movie.image' alt='affiche' />
 
                 </div>
                 <div class="course-info">
-                    <h2>Titre film</h2>
-                    <h6>Année ?</h6>
+                    <h2>{{movie.title}}</h2>
+                    <h6>{{movie.release_date}}</h6>
                     <span> autre info </span>
 
                 </div>
@@ -19,15 +19,23 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 
 export default {
   name: 'FilmDetails',
-
+  data:()=>({
+      movie:{}
+  }),
+  async created(){
+      const {filmId} = this.$route.params
+      const apiDetailsUri = 'https://ghibliapi.herokuapp.com/films/'+filmId
+      const oneMovie = await axios.get(apiDetailsUri)
+      this.movie = oneMovie.data
+      console.log(oneMovie)
+  }
 }
 </script>
 <style scoped>
-@import url('data:application/octet-stream;base64,QGZvbnQtZmFjZSB7CiAgZm9udC1mYW1pbHk6ICdNdWxpJzsKICBmb250LXN0eWxlOiBub3JtYWw7CiAgZm9udC13ZWlnaHQ6IDQwMDsKICBmb250LWRpc3BsYXk6IHN3YXA7CiAgc3JjOiB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL211bGkvdjI2LzdBdWxwXzBxaXotYVZ6N3UzUEpMY1VNWU9Gbk9rRWszMGUwLnR0ZikgZm9ybWF0KCd0cnVldHlwZScpOwp9Cg==');
 
 .courses-container {
     font-family: 'Muli', sans-serif;
