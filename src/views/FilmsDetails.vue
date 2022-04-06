@@ -3,9 +3,7 @@
         <div class="courses-container">
             <div class="course">
                 <div class="course-preview" >
-
                     <img :src='movie.image' alt='affiche' />
-
                 </div>
                 <div class="course-info">
                     <h2>{{movie.title}}</h2>

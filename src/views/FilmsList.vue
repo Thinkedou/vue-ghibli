@@ -23,6 +23,7 @@
 
 <script>
 import axios from 'axios'
+const GHIBLI_API_URL = "https://ghibliapi.herokuapp.com/films"
 
 export default {
   name: 'FilmsList',
@@ -37,7 +38,7 @@ export default {
   },
   async created(){
 
-      const movies = await axios.get("https://ghibliapi.herokuapp.com/films")
+      const movies = await axios.get(GHIBLI_API_URL)
       this.movies  = movies.data
 
       console.log('CREATED')
