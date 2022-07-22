@@ -9,40 +9,27 @@
           </tr>
       </thead>
       <tbody>
-          <tr v-for="movie in movies" :key="movie.id" >
-              <td>{{movie.id}}</td>
-              <td>{{movie.title}}</td>
-              <td>{{movie.release_date}}</td>
-              <td @click="goToMoviesDetails(movie.id)">👀</td>
-          </tr>
-
-          <!-- and so on... -->
+        <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>date</td>
+            <td>👀</td>
+        </tr>
       </tbody>
   </table>
 </template>
 
 <script>
-import axios from 'axios'
-const GHIBLI_API_URL = "https://ghibliapi.herokuapp.com/films"
 
 export default {
   name: 'FilmsList',
   data:()=>({
-      movies:[],
+
   }),
   methods:{
-      goToMoviesDetails(moviesId){
-          console.log(moviesId)
-          this.$router.push({name:'filmsDetails',params:{filmId:moviesId}})
-      }
-  },
-  async created(){
 
-      const movies = await axios.get(GHIBLI_API_URL)
-      this.movies  = movies.data
-
-      console.log('CREATED')
   }
+  
 }
 </script>
 

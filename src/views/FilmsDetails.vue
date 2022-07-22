@@ -3,11 +3,11 @@
         <div class="courses-container">
             <div class="course">
                 <div class="course-preview" >
-                    <img :src='movie.image' alt='affiche' />
+                    <img src='https://www.linflux.com/wp-content/uploads/2021/08/Ponyo.jpg' alt='affiche' />
                 </div>
                 <div class="course-info">
-                    <h2>{{movie.title}}</h2>
-                    <h6>{{movie.release_date}}</h6>
+                    <h2>Tilte</h2>
+                    <h6>Data</h6>
                     <span> autre info </span>
 
                 </div>
@@ -17,20 +17,14 @@
 </template>
 
 <script>
-import axios from 'axios'
+i
 
 export default {
   name: 'FilmDetails',
   data:()=>({
-      movie:{}
+
   }),
-  async created(){
-      const {filmId} = this.$route.params
-      const apiDetailsUri = 'https://ghibliapi.herokuapp.com/films/'+filmId
-      const oneMovie = await axios.get(apiDetailsUri)
-      this.movie = oneMovie.data
-      console.log(oneMovie)
-  }
+
 }
 </script>
 <style scoped>
