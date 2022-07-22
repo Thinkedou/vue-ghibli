@@ -17,8 +17,6 @@
 </template>
 
 <script>
-i
-
 export default {
   name: 'FilmDetails',
   data:()=>({
